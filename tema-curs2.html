@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+    //1. Folosind switch statement transformati urmatoarea suma din 749 RON in EUR, HUF, USD.
+    function exchangeMoney(currency) {
+        let moneyRON = 749;
+        let money;
+        switch (currency) {
+            case "EUR":
+                money = moneyRON / 4.89;
+                break;
+            case "USD":
+                money = moneyRON / 4.3;
+                break;
+            case "HUF":
+                money = moneyRON / 0.014;
+                break;
+            default:
+                console.log("Given currency is not an option.")
+        }
+        console.log("Exchanged money: " + money + currency);
+    }
+
+    //2. Scrieti o functie care primeste un parametru si returneaza tipul acestuia.
+    function checkTypeOfParameter(parameter) {
+        console.log("The type of given parameter is: " + typeof parameter);
+        return typeof parameter;
+    }
+
+    //3. Scrieti o functie javascript care accepta ca parametru un string care ia fiecare cuvant in parte
+    // si ii extrage prima litera, dupa care concateneaza literele extrase
+    function acronymString(string) {
+        var resultSplit = string.split(" ");
+        var result = "";
+        for (let i = 0; i < resultSplit.length; i++) {
+            result += resultSplit[i][0];
+        }
+        return result;
+    }
+
+    const fraze = [
+        "Quisque faucibus ipsum id nibh egestas bibendum.",
+        "Phasellus tincidunt sapien nec est tempus lacinia.",
+        "Curabitur ac elit at turpis ultrices hendrerit at et tellus.",
+        "Praesent a magna a ligula gravida sodales eu ut erat.",
+        "Ut eleifend velit vitae ipsum mattis viverra."
+    ];
+
+    function acronymFraze() {
+        let acronymFraze = [];
+        for (let i = 0; i < fraze.length; i++) {
+            acronymFraze[i] = acronymString(fraze[i]);
+        }
+        console.log(acronymFraze);
+    }
+
+    //4. Declarati o clasa Shape care sa contina urmatoarele proprietati si metode
+    class Shape {
+        //constructor
+        constructor(color, edges) {
+            this.color = color;
+            this.edges = edges;
+        }
+
+        //methods
+        getPerimeter() {
+            let perimeter = 0;
+            for (let i = 0; i < this.edges.length; i++) {
+                perimeter += this.edges[i];
+            }
+            return perimeter;
+        }
+
+        getSemiPerimeter() {
+            let perimeter = 0;
+            for (let i = 0; i < this.edges.length; i++) {
+                perimeter += this.edges[i];
+            }
+            return perimeter / 2;
+        }
+
+        getTypeOfShape() {
+            switch (this.edges.length) {
+                case 3:
+                    return "triangle";
+                case 4:
+                    return "patrulater";
+                case 5:
+                    return "pentagon";
+                case 6:
+                    return "hexagon";
+                default:
+                    return "WORK IN PROGRESS";
+            }
+        }
+    }
+
+    let myShape = new Shape("blue", [3, 4, 5]);
+    console.log("Type: " + myShape.getTypeOfShape());
+    console.log("Color: " + myShape.color);
+    console.log("Perimeter: " + myShape.getPerimeter());
+    console.log("Semiperimeter: " + myShape.getSemiPerimeter())
+
+    //5. Creati doua clase care pot extinde clasa Shape, in template-ul acestor clase, implementati metoda aria.
+    class Square extends Shape { //assume all 4 edges ar the same
+        getArea() {
+            return this.edges[0] * this.edges[1];
+        }
+    }
+
+    class Triangle extends Shape {
+        getArea() {
+            let semiPerimeter = this.getSemiPerimeter();
+            return Math.sqrt(semiPerimeter * (semiPerimeter - this.edges[0]) * (semiPerimeter - this.edges[1]) * (semiPerimeter - this.edges[2]))
+        }
+
+    }
+
+    let mySquare = new Square("red", [2, 2, 2, 2]);
+    console.log("Type: " + mySquare.getTypeOfShape());
+    console.log("Color: " + mySquare.color);
+    console.log("Perimeter: " + mySquare.getPerimeter());
+    console.log("Semiperimeter: " + mySquare.getSemiPerimeter())
+    console.log("Area: " + mySquare.getArea())
+
+    let myTriangle = new Triangle("pink", [2, 2, 3]);
+    console.log("Type: " + myTriangle.getTypeOfShape());
+    console.log("Color: " + myTriangle.color);
+    console.log("Perimeter: " + myTriangle.getPerimeter());
+    console.log("Semiperimeter: " + myTriangle.getSemiPerimeter())
+    console.log("Area: " + myTriangle.getArea())
+</script>
+</body>
+</html>
