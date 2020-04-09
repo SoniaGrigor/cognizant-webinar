@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<script>
+    //2. calculati aria unui cerc care are raza egala cu 10 cm.
+    const PI = 3.1415;
+    let radius = 10;
+    let area = PI * radius ** 2;
+    console.log("Area:" + area);
+
+    //3. creeaza un tablou care sa contina 5 titluri de film.
+    // Parcurge tabloul si afiseaza titlul filmului si pozitia sa din tablou.
+    let movies = ["Casablanca", "The Godfather", "Notebook", "Bad boys for life", "Forest Gump"]
+    for (var i = 0; i < movies.length; i++) {
+        console.log("Name: " + movies[i] + " Position:" + i);
+    }
+
+    //4. Afiseza numarul minim si numarul maxim din urmatorul
+    //tablou [5, 3, "1", 7, "9", 30, "45", 7].
+    let array = [5, 3, "1", 7, "9", 30, "45", 7];
+    let max = array[0];
+    let min = array[0];
+    for (var i = 1; i < array.length; i++) {
+        if (array[i] > max) {
+            max = array[i];
+        }
+        ;
+        if (array[i] < min) {
+            min = array[i];
+        }
+    }
+    console.log("Maximum number:" + max);
+    console.log("Minimum number:" + min);
+</script>
+</body>
+</html>
